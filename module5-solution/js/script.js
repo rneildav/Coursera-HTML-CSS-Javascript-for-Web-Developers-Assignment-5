@@ -75,7 +75,7 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
         // random category into the home HTML snippet, and then insert that snippet into our
         // main page (index.html).
         //
-        // TODO: STEP 1: Substitute [...] below with the *value* of the function buildAndShowHomeHTML,
+        // STEP 1: Substitute [...] below with the *value* of the function buildAndShowHomeHTML,
         // so it can be called when server responds with the categories data.
 
         // *** start ***
@@ -107,13 +107,11 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
                 // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
                 // variable's name implies it expects.
                 // var chosenCategoryShortName = ....
-
                 var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+
                 $ajaxUtils.sendGetRequest(
                     homeHtmlUrl,
                     function(homeHtmlUrl) {
-                        // Switch CSS class active to menu button
-                        switchMenuToActive();
 
                         // STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
                         // chosen category from STEP 2. Use existing insertProperty function for that purpose.
@@ -134,15 +132,9 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
                         // Use the existing insertHtml function for that purpose. Look through this code for an example
                         // of how to do that.
                         // ....
-                        // dc.loadMenuItems(chosenCategoryShortName);
                         insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
-
                     },
                     false);
-
-
-
-
 
             },
             false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
